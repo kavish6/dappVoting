@@ -43,8 +43,8 @@ contract Voting {
     /// Give your vote
     function vote(uint candidate) public {
         Voter storage sender = voters[msg.sender];
-        require(election_state==ELECTION_STATE.OPEN, "voting closed.");
-        require(!sender.voted, "Already voted.");
+        // require(election_state==ELECTION_STATE.OPEN, "voting closed.");
+        // require(!sender.voted, "Already voted.");
         sender.voted = true;
         sender.vote = candidate;
 
