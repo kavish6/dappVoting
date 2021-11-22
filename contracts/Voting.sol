@@ -5,7 +5,7 @@ contract Voting {
     // It will represent a single voter.
     struct Voter {
         bool voted;  // if true, that person already voted
-        uint vote;   // index of the voted proposal
+        uint vote;   // index of the voted Candidate 
     }
        enum ELECTION_STATE{
         OPEN,CLOSED
@@ -43,8 +43,8 @@ contract Voting {
     /// Give your vote
     function vote(uint candidate) public {
         Voter storage sender = voters[msg.sender];
-        // require(election_state==ELECTION_STATE.OPEN, "voting closed.");
-        // require(!sender.voted, "Already voted.");
+        require(election_state==ELECTION_STATE.OPEN, "voting closed.");
+        require(!sender.voted, "Already voted.");
         sender.voted = true;
         sender.vote = candidate;
 
